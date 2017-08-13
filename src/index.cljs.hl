@@ -1,0 +1,10 @@
+(page "index.html"
+  )
+
+(html (body (script :src "purify.js")
+            (script (.write js/document
+                            (.sanitize js/DOMPurify
+                                       "<!--[if gte mso 9]><xml></xml><![endif]--><br/><!--[if gte mso 9]><xml></xml><![endif]--><!--[if gte mso 9]><xml></xml><![endif]--><!--[if gte mso 10]><style></style><![endif]--><div class=\"separator\" style=\"clear: both; text-align: center;\"><script>alert('foo')</script></div>"
+                                       (clj->js {:FORBID_ATTR ["style"]
+                                                 :FORBID_TAGS ["style"]}))))))
+
